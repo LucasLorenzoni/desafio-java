@@ -1,73 +1,85 @@
-# 🔹 Desafio Técnico Júnior #1 – Cadastro e Consulta de Abastecimentos
+# API REST para Gestão de Abastecimentos de Posto de Combustível
 
-## 🛠 Objetivo
-
-Desenvolver uma aplicação simples em **Java** para cadastro e consulta de abastecimentos em um posto de combustível, com armazenamento em banco de dados e exibição dos dados via **Java Swing** ou **API REST**.
+Uma API RESTful desenvolvida com **Java 17** e **Spring Boot 3**, voltada para a **gestão de combustíveis, bombas e abastecimentos** de um posto. O projeto adota uma arquitetura em camadas e práticas modernas de desenvolvimento, além de estar preparado para testes via Swagger UI.
 
 ---
 
-## 📌 Funcionalidades Implementadas
+## Visão Geral e Arquitetura
 
-✅ Operaçoes basicas (Criar, Listar, Alterar, Deletar) de **Tipos de Combustível** 
-- Nome - Texto
-- Preço por litro
+Este sistema foi construído com foco na separação de responsabilidades, manutenibilidade e clareza. A arquitetura está dividida em:
 
-✅ Operaçoes basicas (Criar, Listar, Alterar, Deletar) de **Bombas de Combustível** (relacionadas a um tipo de combustível)
-- Nome da bomba
-- Combustivel que abastece
-
-✅ Operaçoes basicas (Criar, Listar, Alterar, Deletar)  de **Abastecimentos** (com data, volume abastecido e valor total)
-- Bomba que foi realizado o abastecimento
-- Data do abastecimento
-- Quantidade em valores
-- Litragem
-  
-✅ **Consulta** de todos os dados cadastrados (via Java Swing ou API)  
-✅ Persistência dos dados (ao menos em tempo de execução)  
+- **Camada Controller** (`/controller`) — Define os endpoints da API.
+- **Camada de Serviço** (`/business`) — Contém a lógica de negócio.
+- **Camada DTO** (`/dto`) — Facilita a comunicação e evita acoplamentos desnecessários com entidades JPA.
+- **Camada Entidades** (`/infrastructure/entity`) — Representa as tabelas do banco de dados.
+- **Camada Repositórios** (`/infrastructure/repository`) — Acesso aos dados via Spring Data JPA.
+- **Camada de Exceções** (`/infrastructure/exceptions`) — Define erros customizados como `ConflictException`.
 
 ---
 
-## ✅ Requisitos Atendidos
+## Funcionalidades da API
 
-- Projeto Java com estrutura organizada (usando Maven ou Gradle)
-- Relacionamentos entre entidades corretamente implementados
-- Interface gráfica Java Swing **ou** API HTTP para cadastro e consulta
-- Código comentado e organizado
+### Tipos de Combustível (`/api/tipos-combustivel`)
+| Método | Endpoint                     | Descrição                      |
+|--------|------------------------------|--------------------------------|
+| GET    | `/api/tipos-combustivel`     | Lista todos os tipos           |
+| GET    | `/api/tipos-combustivel/{id}`| Busca tipo por ID              |
+| POST   | `/api/tipos-combustivel`     | Cria novo tipo                 |
+| PUT    | `/api/tipos-combustivel/{id}`| Atualiza tipo existente        |
+| DELETE | `/api/tipos-combustivel/{id}`| Remove tipo existente          |
 
----
+### Bombas de Combustível (`/api/bombas`)
+| Método | Endpoint            | Descrição                      |
+|--------|---------------------|--------------------------------|
+| GET    | `/api/bombas`       | Lista todas as bombas          |
+| GET    | `/api/bombas/{id}`  | Busca bomba por ID             |
+| POST   | `/api/bombas`       | Cadastra uma nova bomba        |
+| PUT    | `/api/bombas/{id}`  | Atualiza bomba existente       |
+| DELETE | `/api/bombas/{id}`  | Remove bomba existente         |
 
-## 🌟 Diferenciais Implementados
-
-- API RESTful simples com rotas `GET`, `POST`, `PUT`
-- Boas práticas de organização de código (DAO, camada de serviço, etc.)
-- Persistencia dos dados (em caso de restart da aplicação manter os dados)
-- 
----
-
-## 📬 Como entregar o desafio
-
-1. **Faça um fork** deste repositório.
-2. Implemente a solução no seu fork.
-3. Faça commits organizados com mensagens claras.
-4. Após finalizar:
-   - Envie o link do **repositório forkado** com a sua solução.
-   - Certifique-se de que o projeto roda sem erros e que o README está atualizado.
-
----
-## 🔍 O que será avaliado
-
-- Sua **comunicação**, especialmente ao surgir dúvidas ou obstáculos durante o desenvolvimento.
-- **O processo de desenvolvimento** como um todo, e não apenas o resultado final.
-- A clareza e organização dos **commits** realizados.
-- Sua capacidade de **estruturar a solução em etapas**, mesmo que nem todos os requisitos sejam concluídos.
+### Abastecimentos (`/api/abastecimentos`)
+| Método | Endpoint                  | Descrição                      |
+|--------|---------------------------|--------------------------------|
+| GET    | `/api/abastecimentos`     | Lista todos os abastecimentos |
+| GET    | `/api/abastecimentos/{id}`| Busca abastecimento por ID    |
+| POST   | `/api/abastecimentos`     | Registra novo abastecimento   |
+| PUT    | `/api/abastecimentos/{id}`| Atualiza abastecimento        |
+| DELETE | `/api/abastecimentos/{id}`| Remove abastecimento          |
 
 ---
 
-## 💡 Dicas para se sair bem
+## Testes Interativos com Swagger
 
-- Divida o desafio em **pequenas partes** e implemente **com calma**, focando em cada funcionalidade por vez.
-- Use **commits claros e objetivos**, indicando exatamente o que foi alterado ou implementado.
-- Em caso de dúvida, **comunique-se** — mostrar que você sabe buscar soluções é um ponto positivo.
-- Mesmo que não finalize 100% dos requisitos, **a qualidade do seu processo será levada em conta**.
+O projeto já possui documentação interativa via Swagger.
+
+> Após executar o projeto, acesse no navegador:
+
+🔗 [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html)
+
+Você poderá:
+- Ver os modelos das entidades e DTOs;
+- Testar os endpoints diretamente no navegador;
+- Validar entradas e saídas da API.
 
 ---
+
+## Tecnologias Utilizadas
+
+- **Linguagem:** Java 21
+- **Framework:** Spring Boot 3.5.3
+- **Banco de Dados:** PostgreSQL
+- **ORM:** Hibernate (via Spring Data JPA)
+- **Documentação da API:** SpringDoc OpenAPI (Swagger)
+- **Empacotamento:** Maven
+- **Utilitários:** Lombok
+
+---
+
+## Configuração e Execução Local
+
+### Pré-requisitos
+
+- JDK 17+
+- Maven 3.8+
+- PostgreSQL instalado e em execução
+- Postman, Insomnia ou navegador web
