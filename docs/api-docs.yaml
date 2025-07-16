@@ -1,0 +1,311 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/tipos-combustivel/{id}:
+    get:
+      tags:
+      - tipo-de-combustivel-controller
+      operationId: buscarPorId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TipoDeCombustivelDTO"
+    put:
+      tags:
+      - tipo-de-combustivel-controller
+      operationId: atualizar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TipoDeCombustivelDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TipoDeCombustivelDTO"
+    delete:
+      tags:
+      - tipo-de-combustivel-controller
+      operationId: deletar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/bombas/{id}:
+    get:
+      tags:
+      - bomba-de-combustivel-controller
+      operationId: buscarPorId_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BombaDeCombustivelDTO"
+    put:
+      tags:
+      - bomba-de-combustivel-controller
+      operationId: atualizar_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BombaDeCombustivelDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BombaDeCombustivelDTO"
+    delete:
+      tags:
+      - bomba-de-combustivel-controller
+      operationId: deletar_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/abastecimentos/{id}:
+    get:
+      tags:
+      - abastecimento-controller
+      operationId: buscarPorId_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AbastecimentoDTO"
+    put:
+      tags:
+      - abastecimento-controller
+      operationId: atualizar_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AbastecimentoDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AbastecimentoDTO"
+    delete:
+      tags:
+      - abastecimento-controller
+      operationId: deletar_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/tipos-combustivel:
+    get:
+      tags:
+      - tipo-de-combustivel-controller
+      operationId: listarTodos
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TipoDeCombustivelDTO"
+    post:
+      tags:
+      - tipo-de-combustivel-controller
+      operationId: criar
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TipoDeCombustivelDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TipoDeCombustivelDTO"
+  /api/bombas:
+    get:
+      tags:
+      - bomba-de-combustivel-controller
+      operationId: listarTodas
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BombaDeCombustivelDTO"
+    post:
+      tags:
+      - bomba-de-combustivel-controller
+      operationId: criar_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BombaDeCombustivelDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/BombaDeCombustivelDTO"
+  /api/abastecimentos:
+    get:
+      tags:
+      - abastecimento-controller
+      operationId: listarTodos_1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AbastecimentoDTO"
+    post:
+      tags:
+      - abastecimento-controller
+      operationId: criar_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AbastecimentoDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AbastecimentoDTO"
+components:
+  schemas:
+    TipoDeCombustivelDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nomeCombustivel:
+          type: string
+        precoPorLitro:
+          type: number
+    BombaDeCombustivelDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nomeBomba:
+          type: string
+        tipoCombustivelId:
+          type: integer
+          format: int64
+    AbastecimentoDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        dataAbastecimento:
+          type: string
+          format: date
+        litrosAbastecimento:
+          type: number
+        valorTotal:
+          type: number
+        bombaId:
+          type: integer
+          format: int64
