@@ -1,6 +1,6 @@
 # API REST para Gestão de Abastecimentos de Posto de Combustível
 
-Uma API RESTful desenvolvida com **Java 17** e **Spring Boot 3**, voltada para a **gestão de combustíveis, bombas e abastecimentos** de um posto. O projeto adota uma arquitetura em camadas e práticas modernas de desenvolvimento, além de estar preparado para testes via Swagger UI.
+Uma API RESTful desenvolvida com **Java 21** e **Spring Boot 3.5.3**, voltada para a **gestão de combustíveis, bombas e abastecimentos** de um posto. O projeto adota uma arquitetura em camadas e práticas modernas de desenvolvimento, além de estar preparado para testes via Swagger UI.
 
 ---
 
